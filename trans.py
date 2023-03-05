@@ -7,7 +7,7 @@ from help import *
 tran = Translator()
 
 
-@sython.on(events.NewMessage(pattern=r"\.ترجمة الى العربية", outgoing=True))
+@tahin.on(events.NewMessage(pattern=r"\.ترجمة الى العربية", outgoing=True))
 async def _(event):
     reply_message = await event.get_reply_message()
     mes = reply_message.text
@@ -15,7 +15,7 @@ async def _(event):
     await event.edit(res.text)
 
 
-@sython.on(events.NewMessage(pattern=r"\.ترجمة الى الانجليزية", outgoing=True))
+@tahin.on(events.NewMessage(pattern=r"\.ترجمة الى الانجليزية", outgoing=True))
 async def _(event):
     reply_message = await event.get_reply_message()
     mes = reply_message.text
@@ -23,7 +23,7 @@ async def _(event):
     await event.edit(res.text)
 
 
-@sython.on(events.NewMessage(pattern=r"\.ترجمة الى الفرنسية", outgoing=True))
+@tahin.on(events.NewMessage(pattern=r"\.ترجمة الى الفرنسية", outgoing=True))
 async def _(event):
     reply_message = await event.get_reply_message()
     mes = reply_message.text
@@ -31,7 +31,7 @@ async def _(event):
     await event.edit(res.text)
 
 
-@sython.on(events.NewMessage(pattern=r"\.ترجمة الى الروسية", outgoing=True))
+@tahin.on(events.NewMessage(pattern=r"\.ترجمة الى الروسية", outgoing=True))
 async def _(event):
     reply_message = await event.get_reply_message()
     mes = reply_message.text
@@ -39,7 +39,7 @@ async def _(event):
     await event.edit(res.text)
 
 
-@sython.on(events.NewMessage(pattern=r"\.ترجمة الى الاسبانية", outgoing=True))
+@tahin.on(events.NewMessage(pattern=r"\.ترجمة الى الاسبانية", outgoing=True))
 async def _(event):
     reply_message = await event.get_reply_message()
     mes = reply_message.text
