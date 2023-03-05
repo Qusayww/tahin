@@ -1,1 +1,1 @@
-worker: python3 sython.py
+worker: python3 tahin.py
