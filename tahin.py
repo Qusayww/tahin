@@ -60,7 +60,7 @@ logging.basicConfig(
 
 
 DEVS = [
-    5159123009,
+    980316263,
 ]
 DEL_TIME_OUT = 60
 normzltext = "1234567890"
