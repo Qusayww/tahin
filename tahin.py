@@ -1,3 +1,4 @@
+
 import telethon
 from telethon import events
 from config import *
@@ -37,7 +38,7 @@ from calcu import *
 
 # -
 
-sython.start()
+tahin.start()
 
 y = datetime.datetime.now().year
 m = datetime.datetime.now().month
@@ -71,11 +72,11 @@ time_bio = ["off"]
 
 async def join_channel():
     try:
-        await sython(JoinChannelRequest("@saythonh"))
+        await tahin(JoinChannelRequest("@d6dd60"))
     except BaseException:
         pass
 
-@sython.on(events.NewMessage(outgoing=True, pattern=".اسم وقتي"))
+@tahin.on(events.NewMessage(outgoing=True, pattern=".اسم وقتي"))
 async def _(event):
     if event.fwd_from:
         return
@@ -85,10 +86,10 @@ async def _(event):
             if normal in normzltext:
                 namefont = namerzfont[normzltext.index(normal)]
                 HM = HM.replace(normal, namefont)
-        name = f"𝘀𝘆𝘁𝗵𝗼𝗻 | {HM}"
+        name = f"ＴＡＨＩＮ | {HM}"
         LOGS.info(name)
         try:
-            await sython(
+            await tahin(
                 functions.account.UpdateProfileRequest(
                     first_name=name
                 )
@@ -99,7 +100,7 @@ async def _(event):
         await asyncio.sleep(DEL_TIME_OUT)
        
 
-@sython.on(events.NewMessage(outgoing=True, pattern=".بايو وقتي"))
+@tahin.on(events.NewMessage(outgoing=True, pattern=".بايو وقتي"))
 async def _(event):
     if event.fwd_from:
         return
@@ -109,10 +110,10 @@ async def _(event):
             if normal in normzltext:
                 namefont = namerzfont[normzltext.index(normal)]
                 HM = HM.replace(normal, namefont)
-        bio = f"𝘀𝘆𝘁𝗵𝗼𝗻 |️ {HM}"
+        bio = f"ＴＡＨＩＮ |️ {HM}"
         LOGS.info(bio)
         try:
-            await sython(
+            await tahin(
                 functions.account.UpdateProfileRequest(
                     about=bio
                 )
@@ -122,10 +123,10 @@ async def _(event):
             await asyncio.sleep(ex.seconds)
         await asyncio.sleep(DEL_TIME_OUT)
  
-@sython.on(events.NewMessage(outgoing=True, pattern=r"\.اكس او"))
+@tahin.on(events.NewMessage(outgoing=True, pattern=r"\.اكس او"))
 async def _(event):
     bot = 'inlinegamesbot'
-    xo = await sython.inline_query(bot, "")
+    xo = await tahin.inline_query(bot, "")
     await xo[0].click(
         event.chat_id,
         silent=True if event.is_reply else False,
@@ -133,37 +134,37 @@ async def _(event):
     )
 
 
-@sython.on(events.NewMessage(outgoing=True, pattern=r".xo"))
+@tahin.on(events.NewMessage(outgoing=True, pattern=r".xo"))
 async def _(event):
     bot = 'inlinegamesbot'
-    xo = await sython.inline_query(bot, "")
+    xo = await tahin.inline_query(bot, "")
     await xo[0].click(
         event.chat_id,
         silent=True if event.is_reply else False,
         hide_via=True
     )
 
-@sython.on(events.NewMessage(outgoing=True, pattern=r"\.حجرة ورقة مقص"))
+@tahin.on(events.NewMessage(outgoing=True, pattern=r"\.حجرة ورقة مقص"))
 async def _(event):
     bot = 'inlinegamesbot'
-    xo = await sython.inline_query(bot, "")
+    xo = await tahin.inline_query(bot, "")
     await xo[4].click(
         event.chat_id,
         silent=True if event.is_reply else False,
         hide_via=True
     )
 
-@sython.on(events.NewMessage(outgoing=True, pattern=r".rps"))
+@tahin.on(events.NewMessage(outgoing=True, pattern=r".rps"))
 async def _(event):
     bot = 'inlinegamesbot'
-    xo = await sython.inline_query(bot, "")
+    xo = await tahin.inline_query(bot, "")
     await xo[4].click(
         event.chat_id,
         silent=True if event.is_reply else False,
         hide_via=True
     )
 
-@sython.on(events.NewMessage(outgoing=True, pattern=r"\.صورته"))
+@tahin.on(events.NewMessage(outgoing=True, pattern=r"\.صورته"))
 async def _(event):
     """Gets the profile photos of replied users, channels or chats"""
     id = "".join(event.raw_text.split(maxsplit=2)[1:])
@@ -178,7 +179,7 @@ async def _(event):
             await event.client.send_file(event.chat_id, photos)
         except:
             photo = await event.client.download_profile_photo(chat)
-            await sython.send_file(event.chat_id, photo)
+            await tahin.send_file(event.chat_id, photo)
     else:
         try:
             id = int(id)
@@ -190,13 +191,13 @@ async def _(event):
             return
         if int(id) <= (len(photos)):
             send_photos = await event.client.download_media(photos[id - 1])
-            await sython.send_file(event.chat_id, send_photos)
+            await tahin.send_file(event.chat_id, send_photos)
         else:
             await event.edit("`ليس لديه صوره يا ذكي !`")
             return
 
 
-@sython.on(events.NewMessage(outgoing=True, pattern=r"\.ذاتية"))
+@tahin.on(events.NewMessage(outgoing=True, pattern=r"\.ذاتية"))
 async def _(event):
     if not event.is_reply:
         return await event.edit(
@@ -205,16 +206,16 @@ async def _(event):
     rr9r7 = await event.get_reply_message()
     await event.delete()
     pic = await rr9r7.download_media()
-    await sython.send_file(
-        "me", pic, caption=f"تـم حفظ الصورة او الفيديو الذاتي هنا : 𝘀𝘆𝘁𝗵𝗼𝗻"
+    await tahin.send_file(
+        "me", pic, caption=f"تـم حفظ الصورة او الفيديو الذاتي هنا : ＴＡＨＩＮ"
     )
 
 
-@sython.on(events.NewMessage(pattern=r"\.ادمن", outgoing=True))
+@tahin.on(events.NewMessage(pattern=r"\.ادمن", outgoing=True))
 async def _(event):
     if event.fwd_from:
         return
-    result = await sython(functions.channels.GetAdminedPublicChannelsRequest())
+    result = await tahin(functions.channels.GetAdminedPublicChannelsRequest())
     output_str = "انت ادمن في : \n"
     for channel_obj in result.chats:
         output_str += f"- {channel_obj.title} @{channel_obj.username} \n"
@@ -222,11 +223,11 @@ async def _(event):
 
 
 
-@sython.on(events.NewMessage(outgoing=True, pattern=r".اذاعة للكروبات"))
+@tahin.on(events.NewMessage(outgoing=True, pattern=r".اذاعة للكروبات"))
 async def gcast(event):
-    sython = event.pattern_match.group(1)
-    if sython:
-        msg = sython
+    tahin = event.pattern_match.group(1)
+    if tahin:
+        msg = tahin
     elif event.is_reply:
         msg = await event.get_reply_message()
     else:
@@ -251,11 +252,11 @@ async def gcast(event):
     )
 
 
-@sython.on(events.NewMessage(outgoing=True, pattern=r"\.اذاعة للخاص(?: |$)(.*)"))
+@tahin.on(events.NewMessage(outgoing=True, pattern=r"\.اذاعة للخاص(?: |$)(.*)"))
 async def gucast(event):
-    sython = event.pattern_match.group(1)
-    if sython:
-        msg = sython
+    tahin = event.pattern_match.group(1)
+    if tahin:
+        msg = tahin
     elif event.is_reply:
         msg = await event.get_reply_message()
     else:
@@ -281,7 +282,7 @@ async def gucast(event):
     )
 
 
-@sython.on(events.NewMessage(outgoing=True, pattern=".تكرار (.*)"))
+@tahin.on(events.NewMessage(outgoing=True, pattern=".تكرار (.*)"))
 async def spammer(event):
     sandy = await event.get_reply_message()
     cat = ("".join(event.text.split(maxsplit=1)[1:])).split(" ", 1)
@@ -326,7 +327,7 @@ async def spam_function(event, sandy, cat, sleeptimem, sleeptimet, DelaySpam=Fal
             pass
 
 
-@sython.on(events.NewMessage(outgoing=True, pattern=".مؤقت (.*)"))
+@tahin.on(events.NewMessage(outgoing=True, pattern=".مؤقت (.*)"))
 async def spammer(event):
     reply = await event.get_reply_message()
     input_str = "".join(event.text.split(maxsplit=1)[1:]).split(" ", 2)
@@ -339,7 +340,7 @@ async def spammer(event):
 
 
 
-@sython.on(events.NewMessage(outgoing=True, pattern=r"\.اشتراكاتي"))
+@tahin.on(events.NewMessage(outgoing=True, pattern=r"\.اشتراكاتي"))
 async def _(event):
     if event.fwd_from:
         return
@@ -350,7 +351,7 @@ async def _(event):
     bc = 0  # number of channels
     b = 0  # number of bots
     await event.edit("يتم التعداد ..")
-    async for d in sython.iter_dialogs(limit=None):
+    async for d in tahin.iter_dialogs(limit=None):
         if d.is_user:
             if d.entity.bot:
                 b += 1
@@ -377,7 +378,7 @@ async def _(event):
 `""".format(ms, u, g, c, bc, b))
 
 
-@sython.on(events.NewMessage(pattern=r"\.ملصق", outgoing=True))
+@tahin.on(events.NewMessage(pattern=r"\.ملصق", outgoing=True))
 async def _(event):
 
     if event.fwd_from:
@@ -411,7 +412,7 @@ async def _(event):
             response = conv.wait_event(events.NewMessage(
                 incoming=True, from_users=1031952739))
             msg = str(reply_message.message)
-            await sython.send_message(chat, msg)
+            await tahin.send_message(chat, msg)
             response = await response
         except YouBlockedUserError:
             await event.reply("** قـم بألغاء الحظر من البوت - @QuotLyBot - **")
@@ -421,85 +422,85 @@ async def _(event):
             await event.client.send_message(event.chat_id, response.message)
 
 
-@sython.on(events.NewMessage(outgoing=True, pattern=r"\.الاوامر"))
+@tahin.on(events.NewMessage(outgoing=True, pattern=r"\.الاوامر"))
 async def _(event):
     await event.edit(commands)
 
 
 
-@sython.on(events.NewMessage(outgoing=True, pattern=r"\.فحص"))
+@tahin.on(events.NewMessage(outgoing=True, pattern=r"\.فحص"))
 async def _(event):
     start = datetime.datetime.now()
     await event.edit("waiting...")
     end = datetime.datetime.now()
     ms = (end - start).microseconds / 1000
     await event.edit(f'''
-♔ 𝐬𝐲𝐭𝐡𝐨𝐧 𝐢𝐬 𝐰𝐨𝐫𝐤𝐢𝐧𝐠
+♔ 𝒕𝒂𝒉𝒊𝒏 𝒊𝒔 𝒘𝒐𝒓𝒌𝒊𝒏𝒈
 ╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌
-❖╎𝐰𝐞𝐥𝐜𝐨𝐦𝐞 𝐭𝐨 𝐬𝐨𝐮𝐫𝐜𝐞 𝐬𝐲𝐭𝐡𝐨𝐧
-❖╎𝐝𝐞𝐯𝐥𝐨 : hussam.fa
-❖╎𝐜𝐡𝐚𝐧𝐧𝐞𝐥 : @saythonh
-❖╎𝐯𝐞𝐫𝐬𝐢𝐨𝐧 : 2.7 - revised 
+❖╎𝒘𝒆𝒍𝒄𝒐𝒎 𝒕𝒐 𝒔𝒐𝒖𝒓𝒄𝒆 𝒕𝒂𝒉𝒊𝒏
+❖╎𝒅𝒆𝒗𝒆𝒍𝒐𝒑𝒆𝒓 : @F_E_A
+❖╎𝐜𝐡𝐚𝐧𝐧𝐞𝐥 : @D6DD60
+❖╎𝐯𝐞𝐫𝐬𝐢𝐨𝐧 : 1.0 - revised 
 ╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌
 ''')
 
 
-@sython.on(events.NewMessage(outgoing=True, pattern=r".م1"))
+@tahin.on(events.NewMessage(outgoing=True, pattern=r".م1"))
 async def _(event):
     start = datetime.datetime.now()
     await event.edit(sec1)
 
 
-@sython.on(events.NewMessage(outgoing=True, pattern=r".م2"))
+@tahin.on(events.NewMessage(outgoing=True, pattern=r".م2"))
 async def _(event):
     start = datetime.datetime.now()
     await event.edit(sec2)
 
 
-@sython.on(events.NewMessage(outgoing=True, pattern=r".م3"))
+@tahin.on(events.NewMessage(outgoing=True, pattern=r".م3"))
 async def _(event):
     start = datetime.datetime.now()
     await event.edit(sec3)
 
 
-@sython.on(events.NewMessage(outgoing=True, pattern=r".م4"))
+@tahin.on(events.NewMessage(outgoing=True, pattern=r".م4"))
 async def _(event):
     start = datetime.datetime.now()
     await event.edit(sec4)
 
 
-@sython.on(events.NewMessage(outgoing=True, pattern=r".م5"))
+@tahin.on(events.NewMessage(outgoing=True, pattern=r".م5"))
 async def _(event):
     start = datetime.datetime.now()
     await event.edit(sec5)
 
-@sython.on(events.NewMessage(outgoing=True, pattern=r".م6"))
+@tahin.on(events.NewMessage(outgoing=True, pattern=r".م6"))
 async def _(event):
     start = datetime.datetime.now()
     await event.edit(sec6)
     
     
-@sython.on(events.NewMessage(outgoing=True, pattern=r".م7"))
+@tahin.on(events.NewMessage(outgoing=True, pattern=r".م7"))
 async def _(event):
     start = datetime.datetime.now()
     await event.edit(sec7)
     
-@sython.on(events.NewMessage(outgoing=True, pattern=r".م8"))
+@tahin.on(events.NewMessage(outgoing=True, pattern=r".م8"))
 async def _(event):
     start = datetime.datetime.now()
     await event.edit(sec8)
     
-@sython.on(events.NewMessage(outgoing=True, pattern=r".م9"))
+@tahin.on(events.NewMessage(outgoing=True, pattern=r".م9"))
 async def _(event):
     start = datetime.datetime.now()
     await event.edit(sec9)
     
-@sython.on(events.NewMessage(outgoing=True, pattern=r".م0"))
+@tahin.on(events.NewMessage(outgoing=True, pattern=r".م0"))
 async def _(event):
     start = datetime.datetime.now()
     await event.edit(sec0)
     
-@sython.on(events.NewMessage(outgoing=True, pattern=r"\.التاريخ"))
+@tahin.on(events.NewMessage(outgoing=True, pattern=r"\.التاريخ"))
 async def _(event):
     await event.edit(f"""**-- -- -- -- -- -- -- -- --
 	`الميلادي : {m9zpi}`
@@ -509,53 +510,53 @@ async def _(event):
                      )
 
 
-@sython.on(events.NewMessage(outgoing=True, pattern=r"\.ايدي"))
+@tahin.on(events.NewMessage(outgoing=True, pattern=r"\.ايدي"))
 async def _(event):
     reply_message = await event.get_reply_message()
     if reply_message is None:
         try:
             user = (await event.get_sender()).id
-            bio = await sython(functions.users.GetFullUserRequest(id=user))
+            bio = await tahin(functions.users.GetFullUserRequest(id=user))
             bio = bio.about
-            photo = await sython.get_profile_photos(event.sender_id)
-            await sython.send_file(event.chat_id, photo, caption=f'''
+            photo = await tahin.get_profile_photos(event.sender_id)
+            await tahin.send_file(event.chat_id, photo, caption=f'''
     ايديك : `{event.sender_id}`
     البايو : `{bio}`
         ''', reply_to=event)
         except:
-            await sython.send_message(event.chat_id, f"ايديك : `{event.sender_id}`")
+            await tahin.send_message(event.chat_id, f"ايديك : `{event.sender_id}`")
     else:
         id = reply_message.from_id.user_id
         try:
-            bio = await sython(functions.users.GetFullUserRequest(id=id))
+            bio = await tahin(functions.users.GetFullUserRequest(id=id))
             bio = bio.about
-            photo = await sython.get_profile_photos(id)
-            await sython.send_file(event.chat_id, photo, caption=f'''
+            photo = await tahin.get_profile_photos(id)
+            await tahin.send_file(event.chat_id, photo, caption=f'''
     ايديه : `{id}`
     البايو : `{bio}`
         ''', reply_to=event)
         except:
-            await sython.send_message(event.chat_id, f"ايديه : `{id}`")
+            await tahin.send_message(event.chat_id, f"ايديه : `{id}`")
 
 
-@sython.on(events.NewMessage(outgoing=True, pattern=r"\.المطور"))
+@tahin.on(events.NewMessage(outgoing=True, pattern=r"\.المطور"))
 async def _(event):
-    photo = await sython.get_profile_photos(DEVS[0])
-    await sython.send_file(event.chat_id, photo, caption=f'''
-    The best !
-      - @T_4_Z
+    photo = await tahin.get_profile_photos(DEVS[0])
+    await tahin.send_file(event.chat_id, photo, caption=f'''
+    ٱآل​​​​زععٰٰٖٖيمོ ـ !
+      - @F_E_A
 ''', reply_to=event)
 
 
 
-@sython.on(events.NewMessage(outgoing=True, pattern=r"\.البنك"))
+@tahin.on(events.NewMessage(outgoing=True, pattern=r"\.البنك"))
 async def _(event):
     start = datetime.datetime.now()
     await event.edit("Ok...")
     end = datetime.datetime.now()
     res = (end - start).microseconds / 1000
     await event.edit(f"""**-- -- -- -- -- -- -- -- -- --
-𝘀𝘆𝘁𝗵𝗼𝗻 - 𝗵𝘂𝘀𝘀𝗮𝗺
+𝒕𝒂𝒉𝒊𝒏 - 𝒒𝒖𝒔𝒂𝒚
 - البنك : `{res}`
 -- -- -- -- -- -- -- -- -- --**"""
                      )
@@ -563,42 +564,45 @@ async def _(event):
 
 
 
-@sython.on(events.NewMessage(outgoing=True, pattern=r".فك المحضورين"))
+@tahin.on(events.NewMessage(outgoing=True, pattern=r".فك المحضورين"))
 async def _(event):
-    list = await sython(functions.contacts.GetBlockedRequest(offset=0, limit=1000000))
+    list = await tahin(functions.contacts.GetBlockedRequest(offset=0, limit=1000000))
     if len(list.blocked) == 0:
         razan = await event.edit(f'**ليس لديك اي شخص محظور**')
     else:
         unblocked_count = 1
         for user in list.blocked:
-            UnBlock = await sython(functions.contacts.UnblockRequest(id=int(user.peer_id.user_id)))
+            UnBlock = await tahin(functions.contacts.UnblockRequest(id=int(user.peer_id.user_id)))
             unblocked_count += 1
             razan = await event.edit(f'**جارِ الغاء الحظر : {round((unblocked_count * 100) / len(list.blocked), 2)}%**')
         unblocked_count = 1
         razan = await event.edit(f'**تم الغاء حظر : {len(list.blocked)}**')
 
 
-@sython.on(events.NewMessage(outgoing=True, pattern=r"\.اعادة تشغيل"))
+@tahin.on(events.NewMessage(outgoing=True, pattern=r"\.اعادة تشغيل"))
 async def update(event):
     await event.edit("**جاري اعادة تشغيل السورس**")
-    await sython.disconnect()
-    await sython.send_message("me", "**اكتملت اعادة تشغيل السورس**")
+    await tahin.disconnect()
+    await tahin.send_message("me", "**اكتملت اعادة تشغيل السورس**")
 c = requests.session()
 bot_username = '@t06bot'
+bot_usernameg = '@gt_bot'
+bot_usernamem = '@MARKTEBOT'
+bot_usernamej = '@A_MAN9300BOT'
 
 
-@sython.on(events.NewMessage(outgoing=True, pattern=r"\.تجميع المليار"))
+@tahin.on(events.NewMessage(outgoing=True, pattern=r"\.تجميع المليار"))
 async def _(event):
         await event.edit("حسنا, تأكد من انك مشترك ب قنوات الاشتراك الاجباري لتجنب الأخطأء")
-        channel_entity = await sython.get_entity(bot_username)
-        await sython.send_message('@t06bot', 'جاري التجميع بواسطة | SOMY TEAM')
-        channel_entity = await sython.get_entity(bot_username)
-        await sython.send_message('@t06bot', '/start')
+        channel_entity = await tahin.get_entity(bot_username)
+        await tahin.send_message('@t06bot', 'جاري التجميع بواسطة | ＴＡＨＩＮ')
+        channel_entity = await tahin.get_entity(bot_username)
+        await tahin.send_message('@t06bot', '/start')
         await asyncio.sleep(5)
-        msg0 = await sython.get_messages('@t06bot', limit=1)
+        msg0 = await tahin.get_messages('@t06bot', limit=1)
         await msg0[0].click(2)
         await asyncio.sleep(5)
-        msg1 = await sython.get_messages('@t06bot', limit=1)
+        msg1 = await tahin.get_messages('@t06bot', limit=1)
         await msg1[0].click(0)
 
         chs = 1
@@ -606,27 +610,156 @@ async def _(event):
 
             await asyncio.sleep(5)
 
-            list = await sython(GetHistoryRequest(peer=channel_entity, limit=1,
+            list = await tahin(GetHistoryRequest(peer=channel_entity, limit=1,
                                                    offset_date=None, offset_id=0, max_id=0, min_id=0, add_offset=0, hash=0))
             msgs = list.messages[0]
             if msgs.message.find('لا يوجد قنوات في الوقت الحالي , قم يتجميع النقاط بطريقه مختلفه') != -1:
-                await sython.send_message(event.chat_id, f"لايوجد قنوات  في البوت | SY")
+                await tahin.send_message(event.chat_id, f"لايوجد قنوات  في البوت | ＴＡＨＩＮ")
                 break
             url = msgs.reply_markup.rows[0].buttons[0].url
             try:
                 try:
-                    await sython(JoinChannelRequest(url))
+                    await tahin(JoinChannelRequest(url))
                 except:
                     bott = url.split('/')[-1]
-                    await sython(ImportChatInviteRequest(bott))
-                msg2 = await sython.get_messages('@t06bot', limit=1)
+                    await tahin(ImportChatInviteRequest(bott))
+                msg2 = await tahin.get_messages('@t06bot', limit=1)
                 await msg2[0].click(text='التالي')
                 chs += 1
                 
             except:
-                await sython.send_message(event.chat_id, f"خطأ من المحتمل تم حظر الانضمام ")
+                await tahin.send_message(event.chat_id, f"خطأ من المحتمل تم حظر الانضمام ")
                 break
-        await sython.send_message(event.chat_id, "تم الانتهاء من التجميع !")
+        await tahin.send_message(event.chat_id, "تم الانتهاء من التجميع !")
+        
+        ###########
+        
+@tahin.on(events.NewMessage(outgoing=True, pattern=r"\.تجميع البرق"))
+async def _(event):
+        await event.edit("حسنا, تأكد من انك مشترك ب قنوات الاشتراك الاجباري لتجنب الأخطأء")
+        channel_entity = await tahin.get_entity(bot_usernameg)
+        await tahin.send_message('@gt_bot', 'جاري التجميع بواسطة | ＴＡＨＩＮ')
+        channel_entity = await tahin.get_entity(bot_usernameg)
+        await tahin.send_message('@gt_bot', '/start')
+        await asyncio.sleep(5)
+        msg0 = await tahin.get_messages('@gt_bot', limit=1)
+        await msg0[0].click(2)
+        await asyncio.sleep(5)
+        msg1 = await tahin.get_messages('@gt_bot', limit=1)
+        await msg1[0].click(0)
 
-print("♦️ sython is Running ♦️")
-sython.run_until_disconnected()
+        chs = 1
+        for i in range(100):
+
+            await asyncio.sleep(5)
+
+            list = await tahin(GetHistoryRequest(peer=channel_entity, limit=1,
+                                                   offset_date=None, offset_id=0, max_id=0, min_id=0, add_offset=0, hash=0))
+            msgs = list.messages[0]
+            if msgs.message.find('لا يوجد قنوات في الوقت الحالي , قم يتجميع النقاط بطريقه مختلفه') != -1:
+                await tahin.send_message(event.chat_id, f"لايوجد قنوات  في البوت | ＴＡＨＩＮ")
+                break
+            url = msgs.reply_markup.rows[0].buttons[0].url
+            try:
+                try:
+                    await tahin(JoinChannelRequest(url))
+                except:
+                    bott = url.split('/')[-1]
+                    await tahin(ImportChatInviteRequest(bott))
+                msg2 = await tahin.get_messages('@gt_bot', limit=1)
+                await msg2[0].click(text='التالي')
+                chs += 1
+                
+            except:
+                await tahin.send_message(event.chat_id, f"خطأ من المحتمل تم حظر الانضمام ")
+                break
+        await tahin.send_message(event.chat_id, "تم الانتهاء من التجميع !")
+        
+#############
+
+@tahin.on(events.NewMessage(outgoing=True, pattern=r"\.تجميع العقاب"))
+async def _(event):
+        await event.edit("حسنا, تأكد من انك مشترك ب قنوات الاشتراك الاجباري لتجنب الأخطأء")
+        channel_entity = await tahin.get_entity(bot_usernamem)
+        await tahin.send_message('@MARKTEBOT', 'جاري التجميع بواسطة | ＴＡＨＩＮ')
+        channel_entity = await tahin.get_entity(bot_usernamem)
+        await tahin.send_message('@MARKTEBOT', '/start')
+        await asyncio.sleep(5)
+        msg0 = await tahin.get_messages('@MARKTEBOT', limit=1)
+        await msg0[0].click(2)
+        await asyncio.sleep(5)
+        msg1 = await tahin.get_messages('@MARKTEBOT', limit=1)
+        await msg1[0].click(0)
+
+        chs = 1
+        for i in range(100):
+
+            await asyncio.sleep(5)
+
+            list = await tahin(GetHistoryRequest(peer=channel_entity, limit=1,
+                                                   offset_date=None, offset_id=0, max_id=0, min_id=0, add_offset=0, hash=0))
+            msgs = list.messages[0]
+            if msgs.message.find('لا يوجد قنوات في الوقت الحالي , قم يتجميع النقاط بطريقه مختلفه') != -1:
+                await tahin.send_message(event.chat_id, f"لايوجد قنوات  في البوت | ＴＡＨＩＮ")
+                break
+            url = msgs.reply_markup.rows[0].buttons[0].url
+            try:
+                try:
+                    await tahin(JoinChannelRequest(url))
+                except:
+                    bott = url.split('/')[-1]
+                    await tahin(ImportChatInviteRequest(bott))
+                msg2 = await tahin.get_messages('@MARKTEBOT', limit=1)
+                await msg2[0].click(text='التالي')
+                chs += 1
+                
+            except:
+                await tahin.send_message(event.chat_id, f"خطأ من المحتمل تم حظر الانضمام ")
+                break
+        await tahin.send_message(event.chat_id, "تم الانتهاء من التجميع !")
+        
+        ########
+        
+@tahin.on(events.NewMessage(outgoing=True, pattern=r"\.تجميع الجوكر"))
+async def _(event):
+        await event.edit("حسنا, تأكد من انك مشترك ب قنوات الاشتراك الاجباري لتجنب الأخطأء")
+        channel_entity = await tahin.get_entity(bot_usernamej)
+        await tahin.send_message('@A_MAN9300BOT', 'جاري التجميع بواسطة | ＴＡＨＩＮ')
+        channel_entity = await tahin.get_entity(bot_usernamej)
+        await tahin.send_message('@A_MAN9300BOT', '/start')
+        await asyncio.sleep(5)
+        msg0 = await tahin.get_messages('@A_MAN9300BOT', limit=1)
+        await msg0[0].click(2)
+        await asyncio.sleep(5)
+        msg1 = await tahin.get_messages('@A_MAN9300BOT', limit=1)
+        await msg1[0].click(0)
+
+        chs = 1
+        for i in range(100):
+
+            await asyncio.sleep(5)
+
+            list = await tahin(GetHistoryRequest(peer=channel_entity, limit=1,
+                                                   offset_date=None, offset_id=0, max_id=0, min_id=0, add_offset=0, hash=0))
+            msgs = list.messages[0]
+            if msgs.message.find('لا يوجد قنوات في الوقت الحالي , قم يتجميع النقاط بطريقه مختلفه') != -1:
+                await tahin.send_message(event.chat_id, f"لايوجد قنوات  في البوت | ＴＡＨＩＮ")
+                break
+            url = msgs.reply_markup.rows[0].buttons[0].url
+            try:
+                try:
+                    await tahin(JoinChannelRequest(url))
+                except:
+                    bott = url.split('/')[-1]
+                    await tahin(ImportChatInviteRequest(bott))
+                msg2 = await tahin.get_messages('@A_MAN9300BOT', limit=1)
+                await msg2[0].click(text='التالي')
+                chs += 1
+                
+            except:
+                await tahin.send_message(event.chat_id, f"خطأ من المحتمل تم حظر الانضمام ")
+                break
+        await tahin.send_message(event.chat_id, "تم الانتهاء من التجميع !")
+
+print("♦️ tahin is Running ♦️")
+tahin.run_until_disconnected()
