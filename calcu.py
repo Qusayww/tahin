@@ -22,7 +22,7 @@ def calc(num1, num2, fun):
         return "خطأ"
 
 
-@sython.on(events.NewMessage(outgoing=True, pattern=".احسب (.*)"))
+@tahin.on(events.NewMessage(outgoing=True, pattern=".احسب (.*)"))
 async def _(event):
     try:
         msg = ("".join(event.text.split(maxsplit=1)[1:])).split(" ", 2)
